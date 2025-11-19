@@ -1,7 +1,10 @@
 import { GoogleGenAI } from "@google/genai";
 
+// Safely access API key
+const apiKey = (typeof process !== 'undefined' && process.env && process.env.API_KEY) || 'YOUR_API_KEY_HERE';
+
 // Initialize Gemini
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || 'YOUR_API_KEY_HERE' });
+const ai = new GoogleGenAI({ apiKey });
 
 export const generateTourInsights = async (artistName: string, cityData: any[]) => {
   try {
